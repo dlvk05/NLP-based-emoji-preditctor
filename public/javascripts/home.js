@@ -13,6 +13,8 @@ $(function(){
     }
 
     $('#sendInput').on('click',function(){
+        var load=$('#loading');
+        load.show();//show searching
         var dataTOSend={
             input:$input.val()
         };
@@ -24,15 +26,22 @@ $(function(){
             success:function(result){
                 if(result.redirect=='false'){
                     console.log('here');
+                    load.hide();//hide searching
                     spitOut(result);
                     $('#emojiModal').modal('show');
                     $('#copyTOclipboard').on('click',function(){
                         console.log('copy called');
                         $here=$('#here');
-                        $here.focus();
-                        $here.select();
-                        document.execCommand('copy');
-                        alert('copied')
+                        var emo=$here.text();
+                        var $input=$(".copyfrom");
+                        $input.value=emo;
+                        $input.select();
+                        document.execCommand("copy");
+                        console.log(emo);
+                        // $here.focus();
+                        // $here.select();
+                        // document.execCommand('copy');
+                        alert('copied');
                     });
                 }else{
                     window.location.href=result.redirectURL;
@@ -44,14 +53,4 @@ $(function(){
             }
         });
     });
-
-    // $('#copyTOclipboard').on('click',function(){
-    //     console.log('copy called');
-    //     $here=$('#here');
-    //     $here.focus();
-    //     $here.select();
-    //     document.execCommand('copy');
-    //     alert('copied')
-    // });
-
 });

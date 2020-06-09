@@ -15,7 +15,13 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-
+    <!-- Blinking CSS -->
+    <style type="text/css"> 
+            .copyfrom {
+        position: absolute;
+        left: -9999px;
+    }
+    </style>
     <title>Emoji Predictor</title>
   </head>
   <body>
@@ -104,6 +110,12 @@
           <a href="#" class="btn btn-primary" id="sendInput">Submit</a>
         </form>
       </div>
+      <!-- <div class="row"> -->
+        <div class="container" id='loading' style="display:none;">
+          <h3 clas="blink"style="text-align: center; ">Searching...</h3>
+        </div>
+        <input class='copyfrom' tabindex='-1' aria-hidden='true'>
+      <!-- </div> -->
     </div>
 
     <!-- Optional JavaScript -->
